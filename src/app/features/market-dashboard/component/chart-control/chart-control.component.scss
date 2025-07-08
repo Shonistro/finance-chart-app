@@ -1,0 +1,68 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.chart-controls {
+  background-color: $background-light;
+  padding: 20px;
+  border-radius: 6px;
+  margin: 25px 0;
+  border-left: 4px solid $accent-yellow;
+
+  h3 {
+    color: $accent-yellow;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .chart-parameters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .parameter {
+      flex: 1;
+      min-width: 200px;
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: $text-light;
+        font-weight: bold;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 12px;
+        background-color: $background-dark;
+        color: $text-light;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+
+        &:focus {
+          outline: none;
+          border-color: $accent-yellow;
+        }
+      }
+
+      select option {
+        background-color: $background-dark;
+        color: $text-light;
+        padding: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .chart-parameters {
+    flex-direction: column;
+
+    .parameter {
+      width: 100%;
+    }
+  }
+}
+
+
+

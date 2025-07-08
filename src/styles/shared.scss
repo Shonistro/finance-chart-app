@@ -1,0 +1,20 @@
+@use 'variables' as *;
+
+.status-message {
+  text-align: center;
+  padding: 18px 24px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  animation: fadeIn 0.5s;
+  &.yellow { background: rgba(255, 215, 0, 0.12); color: #FFD700; }
+  &.red { background: rgba(244, 67, 54, 0.12); color: #F23645; }
+  &.gray { background: #222; color: #DDD; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+} 

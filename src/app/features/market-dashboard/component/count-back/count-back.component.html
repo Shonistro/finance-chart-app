@@ -1,0 +1,8 @@
+<div class="chart-container-wrapper">
+  @if (longLoading()) {
+    <div class="status-message yellow">
+      Graphics are taking too long to load. Please try again later.
+    </div>
+  }
+  <div #chartContainer class="chart-container"></div>
+</div>

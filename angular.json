@@ -31,7 +31,12 @@
             ],
             "styles": [
               "src/styles.scss"
-            ]
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -64,7 +69,8 @@
               "buildTarget": "finance-chart-app:build:production"
             },
             "development": {
-              "buildTarget": "finance-chart-app:build:development"
+              "buildTarget": "finance-chart-app:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
@@ -94,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

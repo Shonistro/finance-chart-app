@@ -1,0 +1,42 @@
+<div class="filters-container">
+  <div class="filter-group">
+    <label for="provider-select">Provider:</label>
+    <select
+      id="provider-select"
+      [ngModel]="selectedProvider()"
+      (ngModelChange)="onProviderChange($event)"
+      [disabled]="providersLoading()"
+    >
+      @if (!providers()) {
+      <option disabled>Loading providers...</option>
+      } @else { 
+        @for (provider of providers()?.data; track provider) {
+      <option [value]="provider">{{ provider }}</option>
+      } }
+    </select>
+
+    @if (providersLoading()) {
+    <span class="loading-indicator">Loading...</span>
+    }
+  </div>
+
+  <div class="filter-group">
+    <label for="kind-select">Kind:</label>
+    <select
+      id="kind-select"
+      [ngModel]="selectedKind()"
+      (ngModelChange)="onKindChange($event)"
+      [disabled]="kindsLoading()"
+    >
+      @if (!kinds()) {
+      <option disabled>Loading kinds...</option>
+      } @else { @for (kind of kinds()?.data; track kind) {
+      <option [value]="kind">{{ kind }}</option>
+      } }
+    </select>
+
+    @if (kindsLoading()) {
+    <span class="loading-indicator">Loading...</span>
+    }
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<div class="instruments-container">
+  <h2>Financial Instruments Dashboard</h2>
+
+  <app-instrument-filters
+    (filtersChanged)="onFiltersChanged($event)"
+  ></app-instrument-filters>
+
+  @if (loading()) {
+  <div class="loading">Loading instruments...</div>
+  }
+
+  @if (instruments()) {
+  <div class="instruments-list">
+    <h3>Found {{ instruments()!.data.length }} instruments</h3>
+
+    <div class="instrument-select-container">
+      <label for="instrument-select">Select Instrument:</label>
+      <select
+        id="instrument-select"
+        [ngModel]="selectedInstrumentId()"
+        (ngModelChange)="selectInstrument($event)"
+        class="instrument-dropdown"
+      >
+        <option [ngValue]="null">-- Select an instrument --</option>
+        @for (instrument of instruments()!.data; track instrument.id) {
+        <option [value]="instrument.id">
+          {{ instrument.symbol }}  
+          <ng-container *ngIf="getInstrumentExchanges(instrument)">
+            <span class="instrument-exchanges">
+              — {{ getInstrumentExchanges(instrument) }}
+            </span>
+          </ng-container>
+        </option>
+        }
+      </select>
+    </div>
+  </div>
+  }
+
+  @if (selectedInstrumentId()) {
+  <div class="realtime-price-block">
+    @if (lastPrice()) {
+      <span class="realtime-label">Price:</span>
+      <span class="realtime-value">{{ lastPrice()?.price | number:'1.4-4' }}</span>
+      <span class="realtime-label">Time:</span>
+      <span class="realtime-value">{{ lastPrice()?.time | date:'HH:mm:ss' }}</span>
+    } @else {
+      <span class="realtime-label">Data loading...</span>
+    }
+  </div>
+  <div class="chart-settings">
+    <div class="setting-group">
+      <label for="interval">Interval:</label>
+      <select
+        id="interval"
+        [ngModel]="chartInterval()"
+        (ngModelChange)="updateInterval($event)"
+      >
+        @for (option of intervalOptions; track option.value) {
+        <option [value]="option.value">{{ option.label }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="setting-group">
+      <label for="periodicity">Periodicity:</label>
+      <select
+        id="periodicity"
+        [ngModel]="chartPeriodicity()"
+        (ngModelChange)="updatePeriodicity($event)"
+      >
+        @for (option of periodicityOptions; track option.value) {
+        <option [value]="option.value">{{ option.label }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="setting-group">
+      <label for="barsCount">Bars Count:</label>
+      <select
+        id="barsCount"
+        [ngModel]="chartBarsCount()"
+        (ngModelChange)="updateBarsCount($event)"
+      >
+        @for (option of barsCountOptions; track option.value) {
+        <option [value]="option.value">{{ option.label }}</option>
+        }
+      </select>
+    </div>
+  </div>
+
+  <app-count-back
+    [instrumentId]="selectedInstrumentId()!"
+    [provider]="currentProvider()"
+    [interval]="chartInterval()"
+    [periodicity]="chartPeriodicity()"
+    [barsCount]="chartBarsCount()"
+    (lastPriceChange)="onLastPriceChange($event)"
+  />
+  }
+</div>
