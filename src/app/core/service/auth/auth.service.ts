@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { AuthResponse } from '../../../shared/interface/auth.interface';
-import { envoriment } from '../../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { inject } from '@angular/core';
 
 @Injectable({
@@ -19,8 +19,8 @@ export class AuthService {
 
     body.set('grant_type', 'password');
     body.set('client_id', 'app-cli');
-    body.set('username', envoriment.username);
-    body.set('password', envoriment.password);
+    body.set('username', environment.username);
+    body.set('password', environment.password);
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -28,7 +28,7 @@ export class AuthService {
 
     return this.http
       .post<AuthResponse>(
-        `/identity/realms/fintatech/protocol/openid-connect/token`,
+        `${environment.apiBaseUrl}/identity/realms/${environment.realm}/protocol/openid-connect/token`,
         body.toString(),
         { headers }
       )
