@@ -8,6 +8,5 @@
             "source": "/(.*)",
             "destination": "/index.html"
         }
-    ],
-    "outputDirectory": "dist/finance-chart-app"
+    ]
 }

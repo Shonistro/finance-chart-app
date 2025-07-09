@@ -1,6 +1,5 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+module.exports =  async function handler(req:any, res: any) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
@@ -8,10 +7,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const body = new URLSearchParams();
   body.set('grant_type', 'password');
   body.set('client_id', 'app-cli');
-  body.set('username', process.env.KEYCLOAK_USERNAME!);
-  body.set('password', process.env.KEYCLOAK_PASSWORD!);
+  body.set('username', process.env['KEYCLOAK_USERNAME']!);
+  body.set('password', process.env['KEYCLOAK_PASSWORD']!);
 
-  const keycloakUrl = `${process.env.KEYCLOAK_BASE_URL}/identity/realms/${process.env.KEYCLOAK_REALM}/protocol/openid-connect/token`;
+  const keycloakUrl = `${process.env['KEYCLOAK_BASE_URL']}/identity/realms/${process.env['KEYCLOAK_REALM']}/protocol/openid-connect/token`;
 
   try {
     const response = await fetch(keycloakUrl, {

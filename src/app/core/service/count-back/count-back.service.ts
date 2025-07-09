@@ -5,6 +5,7 @@ import {
   ResponseCountBack,
   ChartData,
 } from '../../../shared/interface/count-back.interface';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class CountBackService {
   constructor() {}
 
   getCountBack(request: ResponseCountBack): Observable<ChartData> {
-    const url = '/api/bars/v1/bars/count-back';
+    const url = `/api/proxy/bars-count-back`;
 
     const params = new HttpParams()
       .set('instrumentId', request.instrumentId)
