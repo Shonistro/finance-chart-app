@@ -4,7 +4,7 @@ import {
   __spreadValues
 } from "./chunk-WDMUDEB6.js";
 
-// ../../../../node_modules/fancy-canvas/size.mjs
+// node_modules/fancy-canvas/size.mjs
 function size(_a) {
   var width = _a.width, height = _a.height;
   if (width < 0) {
@@ -22,7 +22,7 @@ function equalSizes(first, second) {
   return first.width === second.width && first.height === second.height;
 }
 
-// ../../../../node_modules/fancy-canvas/device-pixel-ratio.mjs
+// node_modules/fancy-canvas/device-pixel-ratio.mjs
 var Observable = (
   /** @class */
   function() {
@@ -91,7 +91,7 @@ function createObservable(win) {
   return new Observable(win);
 }
 
-// ../../../../node_modules/fancy-canvas/canvas-element-bitmap-size.mjs
+// node_modules/fancy-canvas/canvas-element-bitmap-size.mjs
 var DevicePixelContentBoxBinding = (
   /** @class */
   function() {
@@ -324,7 +324,7 @@ function predictedBitmapSize(canvasRect, ratio) {
   });
 }
 
-// ../../../../node_modules/fancy-canvas/canvas-rendering-target.mjs
+// node_modules/fancy-canvas/canvas-rendering-target.mjs
 var CanvasRenderingTarget2D = (
   /** @class */
   function() {
@@ -400,7 +400,7 @@ function tryCreateCanvasRenderingTarget2D(binding, contextOptions) {
   return new CanvasRenderingTarget2D(context, mediaSize, bitmapSize);
 }
 
-// ../../../../node_modules/lightweight-charts/dist/lightweight-charts.development.mjs
+// node_modules/lightweight-charts/dist/lightweight-charts.development.mjs
 var customStyleDefaults$1 = {
   color: "#2196f3"
 };

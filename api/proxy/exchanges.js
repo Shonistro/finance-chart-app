@@ -1,18 +1,17 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-module.exports = async (req, res) => {
-  const apiUrl = 'https://platform.fintacharts.com/api/instruments/v1/exchanges';
+export default async function handler(req, res) {
+  const authHeader = req.headers['authorization'];
+  const url = 'https://platform.fintacharts.com/api/instruments/v1/exchanges' + (req.url.includes('?') ? req.url.substring(req.url.indexOf('?')) : '');
 
-  try {
-    const response = await fetch(apiUrl, {
-      method: req.method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await response.json();
-    res.status(response.status).json(data);
-  } catch (error) {
-    res.status(500).json({ error: 'Proxy error', details: error.message });
-  }
-}; 
+  const apiRes = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Authorization': authHeader || '',
+      'Accept': 'application/json',
+    },
+  });
+
+  const data = await apiRes.text();
+  res.status(apiRes.status).send(data);
+} 

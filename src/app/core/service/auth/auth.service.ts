@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { AuthResponse } from '../../../shared/interface/auth.interface';
 import { inject } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,8 @@ export class AuthService {
 
     body.set('grant_type', 'password');
     body.set('client_id', 'app-cli');
+    body.set('username',environment.username); 
+    body.set('password', environment.password); 
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',

@@ -1,16 +1,15 @@
 {
-  "/identity": {
-    "target": "https://platform.fintacharts.com",
+  "/api/proxy/*": {
+    "target": "http://localhost:3000",
     "secure": false,
-    "changeOrigin": true,
-    "logLevel": "debug"
+    "changeOrigin": true
   },
-  "/api": {
-    "target": "https://platform.fintacharts.com",
+  "/api/login": {
+    "target": "https://platform.fintacharts.com/identity",
     "secure": false,
     "changeOrigin": true,
-    "logLevel": "debug"
+    "pathRewrite": {
+      "^/api/login": "/realms/fintatech/protocol/openid-connect/token"
+    }
   }
 }
-
- 

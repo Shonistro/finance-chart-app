@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
   const authHeader = req.headers['authorization'];
-  const url = 'https://platform.fintacharts.com/api/instruments/v1/instruments' + (req.url.includes('?') ? req.url.substring(req.url.indexOf('?')) : '');
+  const url = 'https://platform.fintacharts.com/api/bars/v1/bars/count-back' + (req.url.includes('?') ? req.url.substring(req.url.indexOf('?')) : '');
 
   const apiRes = await fetch(url, {
     method: 'GET',
@@ -14,4 +14,4 @@ export default async function handler(req, res) {
 
   const data = await apiRes.text();
   res.status(apiRes.status).send(data);
-} 
+}

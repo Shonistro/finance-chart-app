@@ -98,6 +98,9 @@ export class ChartView {
         next: (response) => {
           this.instruments.set(response);
           this.loading.set(false);
+          if (response.data.length > 0 && !this.selectedInstrumentId()) {
+            this.selectedInstrumentId.set(response.data[0].id);
+          }
         },
         error: (err) => {
           this.loading.set(false);

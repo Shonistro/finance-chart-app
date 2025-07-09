@@ -7,10 +7,10 @@ import {
   Subscription,
   __assign,
   __extends
-} from "./chunk-ZCFZGIRK.js";
+} from "./chunk-4PXKNON4.js";
 import "./chunk-WDMUDEB6.js";
 
-// ../../../../node_modules/rxjs/dist/esm5/internal/observable/dom/WebSocketSubject.js
+// node_modules/rxjs/dist/esm5/internal/observable/dom/WebSocketSubject.js
 var DEFAULT_WEBSOCKET_CONFIG = {
   url: "",
   deserializer: function(e) {
@@ -222,7 +222,7 @@ var WebSocketSubject = function(_super) {
   return WebSocketSubject2;
 }(AnonymousSubject);
 
-// ../../../../node_modules/rxjs/dist/esm5/internal/observable/dom/webSocket.js
+// node_modules/rxjs/dist/esm5/internal/observable/dom/webSocket.js
 function webSocket(urlConfigOrSource) {
   return new WebSocketSubject(urlConfigOrSource);
 }

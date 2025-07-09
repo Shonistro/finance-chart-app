@@ -11,7 +11,13 @@
 
   @if (instruments()) {
   <div class="instruments-list">
-    <h3>Found {{ instruments()!.data.length }} instruments</h3>
+    <h3>
+      @if (instruments()!.data.length > 0) {
+        Found {{ instruments()!.data.length }} instruments
+      } @else {
+        No instruments found for the selected combination
+      }
+    </h3>
 
     <div class="instrument-select-container">
       <label for="instrument-select">Select Instrument:</label>

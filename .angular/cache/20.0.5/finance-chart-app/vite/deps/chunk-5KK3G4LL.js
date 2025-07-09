@@ -1,4 +1,4 @@
-// ../../../../node_modules/@angular/common/fesm2022/xhr.mjs
+// node_modules/@angular/common/fesm2022/xhr.mjs
 function parseCookieValue(cookieStr, name) {
   name = encodeURIComponent(name);
   for (const cookie of cookieStr.split(";")) {
@@ -26,4 +26,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-IQ3IBHCJ.js.map
+//# sourceMappingURL=chunk-5KK3G4LL.js.map
