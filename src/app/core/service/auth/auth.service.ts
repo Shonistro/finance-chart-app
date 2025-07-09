@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { AuthResponse } from '../../../shared/interface/auth.interface';
-import { environment } from '../../../../environments/environment';
 import { inject } from '@angular/core';
 
 @Injectable({
@@ -19,23 +18,17 @@ export class AuthService {
 
     body.set('grant_type', 'password');
     body.set('client_id', 'app-cli');
-    body.set('username', environment.username);
-    body.set('password', environment.password);
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
     });
 
+   
     return this.http
-      .post<AuthResponse>(
-        `${environment.apiBaseUrl}/identity/realms/${environment.realm}/protocol/openid-connect/token`,
-        body.toString(),
-        { headers }
-      )
+      .post<AuthResponse>('/api/login', body.toString(), { headers })
       .pipe(
         tap((res) => {
           this.tokenSubject.next(res.access_token);
-
           localStorage.setItem('access_token', res.access_token);
         })
       );

@@ -34,7 +34,6 @@ export class CountBack implements AfterViewInit, OnDestroy {
   private destroyRef = inject(DestroyRef);
   private wsService = inject(WebsocketService);
   private auth = inject(AuthService);
-  private wsSubscription: any;
   private accessToken = this.auth.getToken();
 
   instrumentId = input.required<string>();

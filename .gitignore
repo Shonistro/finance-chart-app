@@ -37,3 +37,4 @@ coverage/
 # Optional: Windows system files
 *.log
 *.tmp
+.vercel
